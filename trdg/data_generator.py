@@ -120,6 +120,11 @@ class FakeTextDataGenerator(object):
                 horizontal=(distorsion_orientation == 1 or distorsion_orientation == 2),
             )
 
+        ##############################################################
+        # Randomly adding something similar to signature overlaps
+        ##############################################################
+        distorted_img = distorsion_generator.sig_overlap(distorted_img)
+ 
         ##################################
         # Resize image to desired format #
         ##################################

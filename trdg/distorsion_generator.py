@@ -5,7 +5,7 @@ import random as rnd
 import numpy as np
 from typing import Tuple
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 def _apply_func_distorsion(
@@ -155,3 +155,21 @@ def random(
         max_offset,
         (lambda x: rnd.randint(0, max_offset)),
     )
+
+def sig_overlap(image: Image) -> Image:
+    percentageOfTimeToSigOverlap = 100
+    p = rnd.randint(0, 100)
+    if (p > percentageOfTimeToSigOverlap):
+        return image
+    w, h = image.size
+    w2 = int(w/2)
+    h2 = int(h/2)
+    x1 = rnd.randint(0, w2)
+    y1 = 0
+    x2 = rnd.randint(w2, w)
+    y2 = rnd.randint(h2, h)
+    bbox =  (x1, y1, x2, y2)
+    lineWidth = rnd.randint(1,8)
+    draw = ImageDraw.Draw(image)
+    draw.ellipse(bbox, width=lineWidth, outline="black")
+    return image
