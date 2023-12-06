@@ -1,4 +1,3 @@
-import cv2
 import math
 import os
 import random as rnd
@@ -157,7 +156,7 @@ def random(
     )
 
 def sig_overlap(image: Image) -> Image:
-    percentageOfTimeToSigOverlap = 100
+    percentageOfTimeToSigOverlap = int(os.environ("OVERLAP"))
     p = rnd.randint(0, 100)
     if (p > percentageOfTimeToSigOverlap):
         return image
