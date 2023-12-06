@@ -156,7 +156,7 @@ def random(
     )
 
 def sig_overlap(image: Image) -> Image:
-    percentageOfTimeToSigOverlap = int(os.environ("OVERLAP"))
+    percentageOfTimeToSigOverlap = int(os.getenv("OVERLAP","0"))
     p = rnd.randint(0, 100)
     if (p > percentageOfTimeToSigOverlap):
         return image
